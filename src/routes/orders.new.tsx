@@ -47,9 +47,14 @@ function NewOrderPage() {
   async function submit(e: React.FormEvent) {
     e.preventDefault();
     if (!token || !spreadsheetId) return;
-    if (!addingNew && !customerId) return toast.error("اختر العميل أولاً");
-    if (addingNew && !newCustomer.name.trim()) return toast.error("اكتب اسم العميل");
-    setSaving(true);
+    if (!addingNew && !customerId) {
+      toast.error("اختر العميل أولاً");
+      return;
+    }
+    if (addingNew && !newCustomer.name.trim()) {
+      toast.error("اكتب اسم العميل");
+      return;
+    }
     try {
       let finalCustomerId = customerId;
       if (addingNew) {
