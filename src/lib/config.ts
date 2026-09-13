@@ -1,5 +1,7 @@
 // Build-time configuration (set these in .env / GitHub Actions secrets)
-export const GOOGLE_CLIENT_ID = import.meta.env['VITE_GOOGLE_CLIENT_ID'] ?? "";
+// GOOGLE_OAUTH_CLIENT_ID is exposed when provided via Lovable secrets.
+export const GOOGLE_CLIENT_ID =
+  import.meta.env['VITE_GOOGLE_CLIENT_ID'] ?? import.meta.env['GOOGLE_OAUTH_CLIENT_ID'] ?? "";
 export const APPS_SCRIPT_URL = import.meta.env['VITE_APPS_SCRIPT_URL'] ?? "";
 export const INTAKE_TOKEN = import.meta.env['VITE_INTAKE_TOKEN'] ?? "";
 

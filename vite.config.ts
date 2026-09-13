@@ -7,6 +7,11 @@
 import { defineConfig } from "@lovable.dev/vite-tanstack-config";
 
 export default defineConfig({
+  vite: {
+    // Expose GOOGLE_* and VITE_* env variables to client code so the dashboard can read
+    // the OAuth client ID supplied via Lovable secrets (e.g. GOOGLE_OAUTH_CLIENT_ID).
+    envPrefix: ["VITE_", "GOOGLE_"],
+  },
   tanstackStart: {
     // Redirect TanStack Start's bundled server entry to src/server.ts (our SSR error wrapper).
     // nitro/vite builds from this
